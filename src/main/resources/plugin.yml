@@ -1,0 +1,8 @@
+name: FuwaFun
+version: '${project.version}'
+main: me.joehosten.fuwafun.FuwaFun
+api-version: 1.18
+prefix: MIO-MONDAY
+authors: [ 'HO-KAGO TEA TIME' ]
+description: THANK THE LORD ITS FUWA FUWA FRIDAY
+website: https://k-on.fandom.com
