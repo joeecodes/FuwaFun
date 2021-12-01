@@ -3,6 +3,8 @@ package me.joehosten.fuwafun;
 import dev.negativekb.api.plugin.BasePlugin;
 import lombok.Getter;
 import lombok.Setter;
+import me.joehosten.fuwafun.commands.CommandPing;
+import me.joehosten.fuwafun.listeners.JoinListener;
 
 public final class FuwaFun extends BasePlugin {
 
@@ -15,6 +17,8 @@ public final class FuwaFun extends BasePlugin {
         setInstance(this);
 
         registerListeners(new JoinListener());
+
+        registerCommands(new CommandPing());
 
     }
 

@@ -1,4 +1,4 @@
-package me.joehosten.fuwafun;
+package me.joehosten.fuwafun.listeners;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
