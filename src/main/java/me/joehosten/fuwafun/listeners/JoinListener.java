@@ -34,7 +34,7 @@ public class JoinListener implements Listener {
                 toSendOnJoin.forEach(s -> p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("%message%", "&3&lHELL YEAH ITS WAKABA WEDNESDAY"))));
                 return;
             case 4: // Thursday
-                toSendOnJoin.forEach(s -> p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("%message%", "&6&lOMGGGG ITS TON-CHAN THURSDAY"))));
+                toSendOnJoin.forEach(s -> p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("%message%", "&6&lFELIZ JUEVES"))));
                 return;
             case 5: // Friday
                 toSendOnJoin.forEach(s -> p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("%message%", "&d&lOMGOMGOMG ITS FUCKING &5&L&KK &D&LFUWA FUWA FRIDAY &5&L&KK"))));

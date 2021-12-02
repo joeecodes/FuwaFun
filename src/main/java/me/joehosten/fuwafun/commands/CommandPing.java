@@ -14,18 +14,18 @@ public class CommandPing extends Command {
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
                 sender.sendMessage(ChatColor.RED + "You cannot issue this command as console.");
+                return;
             }
-            assert sender instanceof Player;
             Player p = (Player) sender;
-            sender.sendMessage(ChatColor.GREEN + "Your ping is " + ChatColor.YELLOW + p.getPing());
+            sender.sendMessage(ChatColor.GREEN + "Your ping is " + ChatColor.YELLOW + p.getPing() + "ms");
             return;
         }
-        if(!getPlayer(args[0]).isPresent()) {
+        if (!getPlayer(args[0]).isPresent()) {
             sender.sendMessage(ChatColor.RED + "That player does not exist or is not online.");
             return;
         }
         Player target = Bukkit.getPlayer(args[0]);
         assert target != null;
-        sender.sendMessage(ChatColor.GREEN + target.getName() + "'s ping is " + ChatColor.YELLOW + target.getPing());
+        sender.sendMessage(ChatColor.GREEN + target.getName() + "'s ping is " + ChatColor.YELLOW + target.getPing() + "ms");
     }
 }
