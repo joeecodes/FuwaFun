@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import me.joehosten.fuwafun.commands.CommandPing;
+import me.joehosten.fuwafun.listeners.ChatListener;
 import me.joehosten.fuwafun.listeners.JoinListener;
 import me.joehosten.fuwafun.listeners.discord.*;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -38,7 +39,8 @@ public final class FuwaFun extends BasePlugin {
                 new MinecraftPlayerAdvancementEvent(this),
                 new MinecraftPlayerDeathEvent(this),
                 new MinecraftToDiscordChatEvent(this),
-                new MinecraftPlayerLogEvent(this)
+                new MinecraftPlayerLogEvent(this),
+                new ChatListener()
         );
 
         registerCommands(new CommandPing());
@@ -98,7 +100,7 @@ public final class FuwaFun extends BasePlugin {
     }
 
     public void sendChat(Player player, String content) {
-        if(textChannel == null) return;
+        if (textChannel == null) return;
         textChannel.sendMessage("**" + player.getDisplayName() + "**: " + content).queue();
     }
 }

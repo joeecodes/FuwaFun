@@ -6,8 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import java.awt.*;
-
 public class MinecraftToDiscordChatEvent implements Listener {
 
     private final FuwaFun plugin;
@@ -18,8 +16,8 @@ public class MinecraftToDiscordChatEvent implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-        if(e.getMessage().contains("@everyone")) {
-            e.getPlayer().sendMessage(ChatColor.DARK_RED + "You cannot do that");
+        if (e.getMessage().contains("@everyone")) {
+            e.getPlayer().sendMessage(ChatColor.DARK_RED + "You cannot do that!");
             e.setCancelled(true);
             return;
         }
