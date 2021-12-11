@@ -36,5 +36,11 @@ public class ChatListener implements Listener {
         } else {
             e.setFormat(ChatColor.translateAlternateColorCodes('&', "&7" + e.getPlayer().getName() + ": " + e.getMessage()));
         }
+        if (e.getMessage().equalsIgnoreCase("chunchunmaru")) {
+            e.setMessage(ChatColor.translateAlternateColorCodes('&', "&e&lchunchunmaru"));
+        }
+        if (e.getMessage().equalsIgnoreCase("mio")) {
+            e.setMessage(ChatColor.translateAlternateColorCodes('&', "&3&LMIO"));
+        }
     }
 }
