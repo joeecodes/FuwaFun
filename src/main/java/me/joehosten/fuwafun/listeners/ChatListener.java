@@ -36,6 +36,10 @@ public class ChatListener implements Listener {
         } else {
             e.setFormat(ChatColor.translateAlternateColorCodes('&', "&7" + e.getPlayer().getName() + ": " + e.getMessage()));
         }
+    }
+
+    @EventHandler
+    public void onChatColour(AsyncPlayerChatEvent e) {
         if (e.getMessage().equalsIgnoreCase("chunchunmaru")) {
             e.setMessage(ChatColor.translateAlternateColorCodes('&', "&e&lchunchunmaru"));
         }
