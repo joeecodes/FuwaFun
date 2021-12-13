@@ -47,7 +47,7 @@ public class CommandVerify extends Command {
             status = true;
         }
         String done = status ? "Verified" : "Unverified";
-        String doneTarget = status ? "verified" : "unverified"
+        String doneTarget = status ? "verified" : "unverified";
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&a%done% &e%player%&a.").replace("%done%", done).replace("%player%", Objects.requireNonNull(target.getName())));
         if (target.isOnline()) {
             Player t = (Player) target;
