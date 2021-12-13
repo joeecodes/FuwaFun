@@ -16,8 +16,8 @@ public class MinecraftToDiscordChatEvent implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-        if (e.getMessage().contains("@everyone")) {
-            e.getPlayer().sendMessage(ChatColor.DARK_RED + "You cannot do that!");
+        if (e.getMessage().contains("@everyone") || e.getMessage().contains("@here") || e.getMessage().contains("@dj") || e.getMessage().contains("@admin")) {
+            e.getPlayer().sendMessage(ChatColor.DARK_RED + "You cannot ping that role!");
             e.setCancelled(true);
             return;
         }
