@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import me.joehosten.fuwafun.commands.CommandPing;
+import me.joehosten.fuwafun.commands.CommandVerify;
 import me.joehosten.fuwafun.listeners.ChatListener;
 import me.joehosten.fuwafun.listeners.JoinListener;
 import me.joehosten.fuwafun.listeners.discord.*;
@@ -43,7 +44,7 @@ public final class FuwaFun extends BasePlugin {
                 new ChatListener()
         );
 
-        registerCommands(new CommandPing());
+        registerCommands(new CommandPing(), new CommandVerify());
 
         saveDefaultConfig();
 

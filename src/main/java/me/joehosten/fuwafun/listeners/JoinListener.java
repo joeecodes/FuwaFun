@@ -1,10 +1,13 @@
 package me.joehosten.fuwafun.listeners;
 
+import me.joehosten.fuwafun.FuwaFun;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -13,8 +16,10 @@ import java.util.List;
 public class JoinListener implements Listener {
 
     private final List<String> toSendOnJoin;
+    private final FuwaFun plugin;
 
     public JoinListener() {
+        plugin = FuwaFun.getInstance();
         this.toSendOnJoin = Arrays.asList(" ", "&3Welcome to FuwaSMP!&r", " ", "&r%message%&r", " ");
     }
 
@@ -44,6 +49,16 @@ public class JoinListener implements Listener {
                 return;
             case 0: // Sunday
                 toSendOnJoin.forEach(s -> p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("%message%", "&c&lNO WAYYYYYYY.. ITS SUMI SUNDAY"))));
+        }
+    }
+
+    @EventHandler
+    public void onFreezeMovement(PlayerMoveEvent e) {
+        Player p = e.getPlayer();
+        Location from = e.getFrom();
+        boolean isVerified = plugin.getConfig().getStringList("verified").contains(p.getUniqueId().toString());
+        if (!isVerified) {
+            p.teleport(from);
         }
     }
 }
