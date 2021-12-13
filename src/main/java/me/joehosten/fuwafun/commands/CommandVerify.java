@@ -47,10 +47,11 @@ public class CommandVerify extends Command {
             status = true;
         }
         String done = status ? "Verified" : "Unverified";
+        String doneTarget = status ? "verified" : "unverified"
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&a%done% &e%player%&a.").replace("%done%", done).replace("%player%", Objects.requireNonNull(target.getName())));
         if (target.isOnline()) {
             Player t = (Player) target;
-            t.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aYou were &e%done%&a by &e%sender%.").replace("%done%", done).replace("%sender%", sender.getName()));
+            t.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aYou were &e%done%&a by &e%sender%.").replace("%done%", doneTarget).replace("%sender%", sender.getName()));
         }
         config.set("verified", verified);
         plugin.saveConfig();
