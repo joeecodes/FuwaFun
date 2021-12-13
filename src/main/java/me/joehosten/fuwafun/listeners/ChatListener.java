@@ -15,7 +15,8 @@ public class ChatListener implements Listener {
         if (p.hasPermission(perm + "sumi")) {
             e.setFormat(ChatColor.translateAlternateColorCodes('&', "&8[&c&lSUMI&8]&7 " + e.getPlayer().getName() + ": &f" + e.getMessage()));
             return;
-        } else if (p.hasPermission(perm + "asuka")) {
+        }
+        if (p.hasPermission(perm + "asuka")) {
             e.setFormat(ChatColor.translateAlternateColorCodes('&', "&8[&6&lASUKA&8]&7 " + e.getPlayer().getName() + ": &f" + e.getMessage()));
             return;
         }
@@ -30,6 +31,10 @@ public class ChatListener implements Listener {
         if (p.hasPermission(perm + "ritsu")) {
             e.setFormat(ChatColor.translateAlternateColorCodes('&', "&8[&e&lRITSU&8]&7 " + e.getPlayer().getName() + ": &f" + e.getMessage()));
             return;
+        }
+        if (p.hasPermission(perm + "muted")) {
+            e.setFormat("");
+            p.sendMessage(ChatColor.DARK_RED + "YOU ARE MUTED");
         }
         if (p.hasPermission(perm + "mio")) {
             e.setFormat(ChatColor.translateAlternateColorCodes('&', "&8[&3&lMIO&8]&7 " + e.getPlayer().getName() + ": &f" + e.getMessage()));
