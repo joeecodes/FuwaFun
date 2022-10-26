@@ -29,29 +29,28 @@ public class CommandVerify extends Command {
             return;
         }
         OfflinePlayer t = Bukkit.getPlayer(args[0]);
-        Player p = (Player) sender;
+
         assert t != null;
-        verifyPlayer(t, p);
+        verifyPlayer(t, sender);
+
     }
 
-    private void verifyPlayer(OfflinePlayer target, Player sender) {
+    private void verifyPlayer(OfflinePlayer target, CommandSender sender) {
         FileConfiguration config = plugin.getConfig();
         boolean isVerified = config.getStringList("verified").contains(target.getUniqueId().toString());
-        boolean status;
+        boolean status = !isVerified;
         List<String> verified = config.getStringList("verified");
-        if (isVerified) {
+
+        if (isVerified)
             verified.remove(target.getUniqueId().toString());
-            status = false;
-        } else {
+        else
             verified.add(target.getUniqueId().toString());
-            status = true;
-        }
+
         String done = status ? "Verified" : "Unverified";
-        String doneTarget = status ? "verified" : "unverified";
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&a%done% &e%player%&a.").replace("%done%", done).replace("%player%", Objects.requireNonNull(target.getName())));
         if (target.isOnline()) {
             Player t = (Player) target;
-            t.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aYou were &e%done%&a by &e%sender%.").replace("%done%", doneTarget).replace("%sender%", sender.getName()));
+            t.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aYou were &e%done%&a by &e%sender%.").replace("%done%", done.toLowerCase()).replace("%sender%", sender.getName()));
         }
         config.set("verified", verified);
         plugin.saveConfig();
