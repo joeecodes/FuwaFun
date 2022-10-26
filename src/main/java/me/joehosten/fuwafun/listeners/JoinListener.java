@@ -1,11 +1,15 @@
 package me.joehosten.fuwafun.listeners;
 
+import io.papermc.paper.event.player.AsyncChatEvent;
 import me.joehosten.fuwafun.FuwaFun;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
@@ -59,6 +63,39 @@ public class JoinListener implements Listener {
         boolean isVerified = plugin.getConfig().getStringList("verified").contains(p.getUniqueId().toString());
         if (!isVerified) {
             p.teleport(from);
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&4You have not been verified by an Admin!"));
+
+        }
+    }
+
+    @EventHandler
+    public void onFreezeChat(AsyncPlayerChatEvent e) {
+        Player p = e.getPlayer();
+        boolean isVerified = plugin.getConfig().getStringList("verified").contains(p.getUniqueId().toString());
+        if (!isVerified) {
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&4You have not been verified by an Admin!"));
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&4You cannot talk until you have been verified!"));
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onFreezeBlockBreak(BlockBreakEvent e) {
+        Player p = e.getPlayer();
+        boolean isVerified = plugin.getConfig().getStringList("verified").contains(p.getUniqueId().toString());
+        if (!isVerified) {
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&4You cannot do this until you have been verified!"));
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onFreezeBlockBreak(BlockPlaceEvent e) {
+        Player p = e.getPlayer();
+        boolean isVerified = plugin.getConfig().getStringList("verified").contains(p.getUniqueId().toString());
+        if (!isVerified) {
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&4You cannot do this until you have been verified!"));
+            e.setCancelled(true);
         }
     }
 }
